@@ -1,6 +1,10 @@
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 
+import logging
+
+logger = logging.getLogger("uvicorn")
+
 app = FastAPI()
 
 class HelloResponse(BaseModel):
@@ -39,7 +43,15 @@ async def get_doc():
         "Access docs: http://127.0.0.1:8000/docs\n"
     )
     return {"documentation": doc}
-    return {"documentation": doc}
+    
+@app.get("/", include_in_schema=False)
+async def root():
+    """Lightweight health endpoint to confirm the service and routes."""
+    return {"service": "day4", "status": "ok"}
 
-from fastapi import FastAPI, Request
+@app.on_event("startup")
+async def startup_event():
+    logger.info("Starting day4 FastAPI app with routes: /hello, /submit, /doc")
+
+
 
