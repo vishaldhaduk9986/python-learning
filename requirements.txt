@@ -4,6 +4,7 @@ transformers==4.35.0
 torch==2.8.0
 pydantic==2.5.1
 python-multipart==0.0.6
+requests==2.31.0
 
 # Optional: smaller model runtime helpers
 # tokenizers==0.13.3

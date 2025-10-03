@@ -55,3 +55,14 @@ If you want, I can:
 - Add code to `src/day13.py` to read `MODEL_NAME` from env and fallback to a smaller default.
 - Add a Dockerfile tailored for Fly.io.
 - Create a GitHub Actions workflow to auto-deploy to Render or Railway.
+
+Using Hugging Face Inference API (avoid local model downloads)
+
+- If you don't want to download models during deployment, use the Hugging Face Inference API. Set the environment variable `HF_INFERENCE_API_TOKEN` to your Hugging Face API token.
+- Optionally set `HF_INFERENCE_API_URL` to a custom inference URL (defaults to `https://api-inference.huggingface.co/models/<MODEL_NAME>`).
+- When `HF_INFERENCE_API_TOKEN` is present the app will call the hosted inference API instead of loading a local model. This avoids large runtime downloads and is recommended for free hosts.
+
+Example env vars on Render/Railway:
+
+- HF_INFERENCE_API_TOKEN = <your_hf_token_here>
+- MODEL_NAME = distilbert-base-uncased-finetuned-sst-2-english

@@ -28,6 +28,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import pipeline
+import requests
 import os
 import logging
 
@@ -47,6 +48,22 @@ except Exception as e:
     # Fallback to the transformers default if loading fails
     logger.exception("Failed to load specified model, falling back to default pipeline.")
     sentiment = pipeline("sentiment-analysis")
+
+# If HF Inference API token is set, prefer calling the hosted inference API
+HF_API_TOKEN = os.environ.get("HF_INFERENCE_API_TOKEN")
+HF_API_URL = os.environ.get("HF_INFERENCE_API_URL") or f"https://api-inference.huggingface.co/models/{MODEL_NAME}"
+
+
+def call_hf_inference_api(text: str):
+    """Call Hugging Face Inference API for text classification.
+
+    Returns the first result dict or raises an exception on failure.
+    """
+    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+    payload = {"inputs": text}
+    resp = requests.post(HF_API_URL, headers=headers, json=payload, timeout=30)
+    resp.raise_for_status()
+    return resp.json()
 
 app = FastAPI()
 
@@ -92,6 +109,22 @@ def analyze(request: TextRequest) -> SentimentResponse:
     Returns:
         SentimentResponse: Sentiment label and confidence score.
     """
+    # If HF API token is provided, call the hosted inference API to avoid local model loads
+    if HF_API_TOKEN:
+        try:
+            api_result = call_hf_inference_api(request.text)
+            # API returns a list of dicts for classification
+            if isinstance(api_result, list) and api_result:
+                r = api_result[0]
+                return SentimentResponse(label=r.get("label"), score=float(r.get("score", 0.0)))
+            # If API returns a dict or unexpected format, attempt to extract
+            if isinstance(api_result, dict):
+                # e.g. {'label': 'POSITIVE', 'score': 0.98}
+                return SentimentResponse(label=api_result.get("label"), score=float(api_result.get("score", 0.0)))
+        except Exception:
+            logger.exception("HF Inference API call failed; falling back to local pipeline.")
+
+    # Local pipeline fallback
     result = sentiment(request.text, truncation=True, max_length=512)[0]
     return SentimentResponse(label=result["label"], score=result["score"])
 
