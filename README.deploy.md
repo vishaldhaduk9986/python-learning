@@ -66,3 +66,25 @@ Example env vars on Render/Railway:
 
 - HF_INFERENCE_API_TOKEN = <your_hf_token_here>
 - MODEL_NAME = distilbert-base-uncased-finetuned-sst-2-english
+
+Docker-based deploy (recommended to avoid OOM on small hosts)
+
+- The repository includes `Dockerfile` and `requirements.deploy.txt` which install only the lightweight runtime dependencies (no `torch` or `transformers`).
+- The Docker image expects `HF_INFERENCE_API_TOKEN` to be set in the runtime environment so the app will use the Hugging Face Inference API instead of loading local models.
+
+Build and run locally:
+
+```bash
+# build
+docker build -t sentiment-service:latest .
+
+# run (replace <your_token> and expose port as needed)
+docker run -e HF_INFERENCE_API_TOKEN=<your_token> -e MODEL_NAME=distilbert-base-uncased-finetuned-sst-2-english -p 8000:8000 sentiment-service:latest
+```
+
+Deploy to Fly.io (example)
+
+1. Install flyctl and login.
+2. `fly launch` (choose a region and app name).
+3. Set secrets on fly: `fly secrets set HF_INFERENCE_API_TOKEN=<your_token> MODEL_NAME=distilbert-base-uncased-finetuned-sst-2-english`.
+4. `fly deploy`.

@@ -40,18 +40,26 @@ MODEL_NAME = os.environ.get(
     "MODEL_NAME", "distilbert-base-uncased-finetuned-sst-2-english"
 )
 
-# Initialize sentiment analysis pipeline globally (model cached)
-try:
-    sentiment = pipeline("sentiment-analysis", model=MODEL_NAME)
-    logger.info(f"Loaded sentiment model: {MODEL_NAME}")
-except Exception as e:
-    # Fallback to the transformers default if loading fails
-    logger.exception("Failed to load specified model, falling back to default pipeline.")
-    sentiment = pipeline("sentiment-analysis")
-
 # If HF Inference API token is set, prefer calling the hosted inference API
+# Read token early so we don't load a local model unnecessarily
 HF_API_TOKEN = os.environ.get("HF_INFERENCE_API_TOKEN")
 HF_API_URL = os.environ.get("HF_INFERENCE_API_URL") or f"https://api-inference.huggingface.co/models/{MODEL_NAME}"
+
+# Local pipeline is lazily initialized only when needed (to avoid high memory usage at startup)
+sentiment = None
+
+
+def _init_local_pipeline():
+    """Initialize the local transformers pipeline and cache it in the module scope."""
+    global sentiment
+    if sentiment is not None:
+        return
+    try:
+        sentiment = pipeline("sentiment-analysis", model=MODEL_NAME)
+        logger.info(f"Loaded sentiment model: {MODEL_NAME}")
+    except Exception:
+        logger.exception("Failed to load specified model, falling back to default pipeline.")
+        sentiment = pipeline("sentiment-analysis")
 
 
 def call_hf_inference_api(text: str):
@@ -124,7 +132,8 @@ def analyze(request: TextRequest) -> SentimentResponse:
         except Exception:
             logger.exception("HF Inference API call failed; falling back to local pipeline.")
 
-    # Local pipeline fallback
+    # Local pipeline fallback - initialize lazily to avoid using memory on small hosts
+    _init_local_pipeline()
     result = sentiment(request.text, truncation=True, max_length=512)[0]
     return SentimentResponse(label=result["label"], score=result["score"])
 
