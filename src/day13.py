@@ -28,9 +28,25 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import pipeline
+import os
+import logging
+
+logger = logging.getLogger("uvicorn")
+
+# Read model name from env to allow using lighter models on free hosts
+# Default to a reasonably small, sentiment-finetuned DistilBERT model
+MODEL_NAME = os.environ.get(
+    "MODEL_NAME", "distilbert-base-uncased-finetuned-sst-2-english"
+)
 
 # Initialize sentiment analysis pipeline globally (model cached)
-sentiment = pipeline("sentiment-analysis")
+try:
+    sentiment = pipeline("sentiment-analysis", model=MODEL_NAME)
+    logger.info(f"Loaded sentiment model: {MODEL_NAME}")
+except Exception as e:
+    # Fallback to the transformers default if loading fails
+    logger.exception("Failed to load specified model, falling back to default pipeline.")
+    sentiment = pipeline("sentiment-analysis")
 
 app = FastAPI()
 
