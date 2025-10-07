@@ -1,14 +1,17 @@
 from fastapi import FastAPI, HTTPException, Depends
 from sqlmodel import SQLModel, Session, Field, create_engine, select
+from typing import Optional, List
+
 
 class Book(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     title: str
     author: str
 
+
 class BookUpdate(SQLModel):
-    title: str | None = None
-    author: str | None = None
+    title: Optional[str] = None
+    author: Optional[str] = None
 
 sqlite_file = "books.db"
 engine = create_engine(f"sqlite:///{sqlite_file}", echo=True)
@@ -30,7 +33,7 @@ app = FastAPI(lifespan=lifespan)
 
 @app.get(
     "/books",
-    response_model=list[Book],
+    response_model=List[Book],
     summary="Get all books",
     response_description="List of all books"
 )

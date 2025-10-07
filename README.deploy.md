@@ -1,90 +1,76 @@
-# Deploying this FastAPI microservice (src/day13.py)
+# Deploying this repository (day4 and day13)
 
-This project exposes a FastAPI app in `src/day13.py` with a POST `/analyze` endpoint that uses Hugging Face Transformers for sentiment analysis.
+This repository contains multiple small FastAPI apps under `src/`.
 
-Notes up-front
+- `src/day4.py` — lightweight example API with endpoints: `/` (health), `/hello`, `/submit`, `/doc`.
+- `src/day13.py` — sentiment-analysis API (`/analyze`) which can run locally with `transformers`/`torch` or use the Hugging Face Inference API when `HF_INFERENCE_API_TOKEN` is set.
 
-- Models like `bert`/`distilbert` will be downloaded at runtime. That can be large (100s of MB). Free hosts have limited disk and memory and may not allow large builds.
-- To reduce memory use pick a small model (e.g., `distilbert-base-uncased-finetuned-sst-2-english`) by setting the environment variable `MODEL_NAME` before starting and updating code to use it.
+Files useful for deployment
 
-Recommended free hosts (shortlist)
+- `Procfile` — already present and points to `uvicorn src.day4:app --host 0.0.0.0 --port $PORT` by default (used by Render for Python services).
+- `requirements.deploy.txt` — lightweight runtime deps (no heavy ML libs). Good for low-memory hosts.
+- `requirements.txt` — full requirements (includes transformers/torch) for local heavy inference if needed.
+- `Dockerfile` — builds a small image using `requirements.deploy.txt` and runs `uvicorn src.day4:app` by default.
 
-- Render (free web-service) — easy for Python apps, supports `requirements.txt` and `Procfile`.
-- Railway (free usage tier) — simple git-based deploys; may sleep inactive services.
-- Fly.io (free tier) — lightweight VMs, good control, but requires creating a small Dockerfile.
-- PythonAnywhere — quick for small, CPU-light apps (may not allow long downloads).
+Important notes
 
-Quick deploy (Render or Railway)
+- On low-memory free hosts (512Mi), do not install `torch`/`transformers` — use `requirements.deploy.txt` and the Hugging Face Inference API (set `HF_INFERENCE_API_TOKEN`).
+- Choose which app you want Render to run: `day4` (lightweight) or `day13` (sentiment). The `Procfile`/start command controls which one is exposed.
 
-1. Create a new GitHub repo and push this project there.
-2. On Render: Create > New Web Service > Connect GitHub repo. Select Python. Build command: `pip install -r requirements.txt` (Render auto-detects). Start command: `uvicorn src.day13:app --host 0.0.0.0 --port $PORT`.
-3. On Railway: Create new project > Deploy from GitHub. Set start command (or Procfile will be used): `uvicorn src.day13:app --host 0.0.0.0 --port $PORT`.
+Deploy to Render — quick guide
 
-Fly.io (Docker) — useful if you need more control
+Render supports two main approaches: a Python service (Render builds from your repo) or a Docker service (you provide a Dockerfile). I’ll show both.
 
-1. Install flyctl and sign up.
-2. Create `Dockerfile` (minimal example):
-   FROM python:3.11-slim
-   WORKDIR /app
-   COPY requirements.txt /app/
-   RUN pip install --no-cache-dir -r requirements.txt
-   COPY . /app
-   CMD ["uvicorn", "src.day13:app", "--host", "0.0.0.0", "--port", "8080"]
-3. Then `fly launch` and `fly deploy`.
+Option A — Python service (no Docker) — easiest
 
-Environment variables and model size
+1. Push your repository to GitHub and connect it to Render.
+2. On Render: New -> Web Service -> Connect Repository -> choose branch.
+3. Environment: select **Python**.
+4. Build command: leave blank (Render auto-detects) or explicitly set:
+   pip install -r requirements.deploy.txt
+   (Use `requirements.deploy.txt` to avoid installing heavy ML libs.)
+5. Start command: set to the app you want to expose:
+   - For the lightweight service: `uvicorn src.day4:app --host 0.0.0.0 --port $PORT`
+   - For the sentiment API: `uvicorn src.day13:app --host 0.0.0.0 --port $PORT` (only if you install full `requirements.txt` or plan to use HF Inference API).
+6. Environment -> Add Environment Variables:
+   - If using HF hosted inference: `HF_INFERENCE_API_TOKEN` = your_token
+   - Optionally: `MODEL_NAME` = distilbert-base-uncased-finetuned-sst-2-english
+7. Create the service and Deploy.
 
-- If you want to force a smaller model, change `src/day13.py` to load pipeline with a MODEL_NAME env var, e.g.:
-  model = os.environ.get('MODEL_NAME', 'distilbert-base-uncased-finetuned-sst-2-english')
-  sentiment = pipeline('sentiment-analysis', model=model)
-- Add a `requirements.txt` (provided) so hosts install the correct packages.
+Option B — Docker service (recommended for reproducibility)
 
-Verifying the service after deploy
+1. Push repository to GitHub.
+2. On Render: New -> Web Service -> Connect repo and choose **Docker**.
+3. Render will build the Dockerfile in your repo. The included `Dockerfile` uses `requirements.deploy.txt` and runs `uvicorn src.day4:app` by default.
+4. Set environment variables on the Render service (HF token, MODEL_NAME if needed).
+5. Deploy and test.
 
-- Curl the endpoint (replace <URL> with your deployed host):
+Why choose Docker on Render here?
 
-  curl -X POST "https://<URL>/analyze" -H "Content-Type: application/json" -d '{"text": "I love this movie!"}'
+- You control exactly what is installed and avoid surprises from the platform resolver.
+- The Dockerfile in this repo is already tuned to be small (no torch/transformers). When you set `HF_INFERENCE_API_TOKEN`, the app uses the hosted HF API so the container stays small and memory friendly.
+
+Testing your deployed service
+
+- Health (root):
+  curl https://<YOUR-SERVICE>.onrender.com/
+  Expected: {"service":"day4","status":"ok"} (if `day4` is the exposed app)
+- Lightweight endpoints (`day4`):
+  curl https://<YOUR-SERVICE>.onrender.com/hello
+  curl -X POST https://<YOUR-SERVICE>.onrender.com/submit -H "Content-Type: application/json" -d '{"key":"value"}'
+- Sentiment endpoint (`day13`):
+  curl -X POST https://<YOUR-SERVICE>.onrender.com/analyze -H "Content-Type: application/json" -d '{"text":"I love this movie!"}'
 
 Troubleshooting
 
-- Large model downloads causing build timeouts: pre-download model locally and use a smaller model, or switch to a host that supports larger images (paid tiers).
-- Memory errors: try a smaller model, or switch to a hosted inference API (Hugging Face Inference API) and call it from your app.
+- 404s: confirm the Start Command / Procfile matches the app you expect (`src.day4:app` vs `src.day13:app`). The Procfile currently points to `day4`.
+- OOM or build failures: use `requirements.deploy.txt` or the Dockerfile (no torch installed). If you need local inference, use a larger instance or Docker image that pre-bundles the model.
+- HF API failures: ensure `HF_INFERENCE_API_TOKEN` is set and valid. Check Render logs for authorization errors (401/403) and timeout errors.
 
-If you want, I can:
+Automation and extras (I can add)
 
-- Add code to `src/day13.py` to read `MODEL_NAME` from env and fallback to a smaller default.
-- Add a Dockerfile tailored for Fly.io.
-- Create a GitHub Actions workflow to auto-deploy to Render or Railway.
+- `.render.yaml` to codify the service name, start command, and environment variables.
+- GitHub Actions workflow to build and publish a Docker image and optionally trigger Render.
+- Add a smoke-test Action that runs `curl /` after deploy and fails the pipeline if the wrong app is serving.
 
-Using Hugging Face Inference API (avoid local model downloads)
-
-- If you don't want to download models during deployment, use the Hugging Face Inference API. Set the environment variable `HF_INFERENCE_API_TOKEN` to your Hugging Face API token.
-- Optionally set `HF_INFERENCE_API_URL` to a custom inference URL (defaults to `https://api-inference.huggingface.co/models/<MODEL_NAME>`).
-- When `HF_INFERENCE_API_TOKEN` is present the app will call the hosted inference API instead of loading a local model. This avoids large runtime downloads and is recommended for free hosts.
-
-Example env vars on Render/Railway:
-
-- HF_INFERENCE_API_TOKEN = <your_hf_token_here>
-- MODEL_NAME = distilbert-base-uncased-finetuned-sst-2-english
-
-Docker-based deploy (recommended to avoid OOM on small hosts)
-
-- The repository includes `Dockerfile` and `requirements.deploy.txt` which install only the lightweight runtime dependencies (no `torch` or `transformers`).
-- The Docker image expects `HF_INFERENCE_API_TOKEN` to be set in the runtime environment so the app will use the Hugging Face Inference API instead of loading local models.
-
-Build and run locally:
-
-```bash
-# build
-docker build -t sentiment-service:latest .
-
-# run (replace <your_token> and expose port as needed)
-docker run -e HF_INFERENCE_API_TOKEN=<your_token> -e MODEL_NAME=distilbert-base-uncased-finetuned-sst-2-english -p 8000:8000 sentiment-service:latest
-```
-
-Deploy to Fly.io (example)
-
-1. Install flyctl and login.
-2. `fly launch` (choose a region and app name).
-3. Set secrets on fly: `fly secrets set HF_INFERENCE_API_TOKEN=<your_token> MODEL_NAME=distilbert-base-uncased-finetuned-sst-2-english`.
-4. `fly deploy`.
+If you want, I can add any of the automation items above or switch the repo defaults so Render exposes `day13` instead of `day4` (or vice versa). Tell me which app you want exposed and whether you prefer Docker or Render's Python service, and I'll make the small edits or add the CI file.

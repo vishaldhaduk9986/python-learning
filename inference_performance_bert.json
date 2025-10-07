@@ -1,6 +1,6 @@
 {
     "model": "bert-base-uncased",
     "num_sentences": 50,
-    "total_inference_time_sec": 0.9676311016082764,
-    "average_inference_time_per_sentence_sec": 0.019352622032165527
+    "total_inference_time_sec": 0.7856550216674805,
+    "average_inference_time_per_sentence_sec": 0.01571310043334961
 }

@@ -1,8 +1,10 @@
 from fastapi import FastAPI, Depends
 from sqlmodel import SQLModel, Session, Field, create_engine, select
+from typing import Optional, List
+
 
 class Task(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     description: str
 
 sqlite_file = "tasks.db"
@@ -40,7 +42,7 @@ def create_task(task: Task, session: Session = Depends(get_session)):
 
 @app.get(
     "/tasks",
-    response_model=list[Task],
+    response_model=List[Task],
     summary="Get all tasks",
     response_description="List of all tasks"
 )
