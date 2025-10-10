@@ -41,12 +41,19 @@ class DummyLLMChain:
 class DummySequentialChain(DummyLLMChain):
     def run(self, *args, **kwargs):
         return {'summary': 'dummy-summary', 'keywords': 'dummy-keywords'}
+    def __call__(self, *args, **kwargs):
+        # Allow the chain to be invoked like a callable with an input dict
+        return self.run(*args, **kwargs)
 
 
 class DummyPromptTemplate:
     def __init__(self, input_variables=None, template=''):
         self.input_variables = input_variables
         self.template = template
+    @classmethod
+    def from_template(cls, template_str: str):
+        # Return an instance similar to the real PromptTemplate.from_template
+        return cls(input_variables=[], template=template_str)
 
 
 class DummyLoader:
@@ -131,10 +138,33 @@ def inject_fakes(tmp_path, monkeypatch):
         def run(self, q):
             return 'dummy-retrieval-answer'
     lc_chains.RetrievalQA = DummyRetrievalQA
+    # create_retrieval_chain should return an object with an `invoke` method
+    def fake_create_retrieval_chain(retriever, combine_chain):
+        class FakeChain:
+            def invoke(self, payload):
+                # Return a dict-like result similar to langchain
+                return {"answer": "fake-answer", "source_documents": []}
+        return FakeChain()
+
+    lc_chains.create_retrieval_chain = fake_create_retrieval_chain
+
+    # create_stuff_documents_chain is expected to accept llm and prompt
+    # and return a chain-like object (we'll return a simple object)
+    combine_mod = make_mod('langchain.chains.combine_documents')
+    def fake_create_stuff_documents_chain(llm, prompt):
+        class CombineChain:
+            def run(self, *args, **kwargs):
+                return {"answer": "combined-fake", "source_documents": []}
+        return CombineChain()
+
+    combine_mod.create_stuff_documents_chain = fake_create_stuff_documents_chain
 
     # prompts
     lc_prompts = make_mod('langchain.prompts')
     lc_prompts.PromptTemplate = DummyPromptTemplate
+    # Some files import PromptTemplate from langchain_core.prompts
+    lc_core_prompts = make_mod('langchain_core.prompts')
+    lc_core_prompts.PromptTemplate = DummyPromptTemplate
 
     # community document loaders and text loaders
     lc_comm_doc = make_mod('langchain_community.document_loaders')

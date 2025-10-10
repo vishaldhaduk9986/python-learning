@@ -1,3 +1,21 @@
+"""
+day19.py
+---------
+Lightweight FastAPI example demonstrating an endpoint that proxies
+questions to an LLM when available, and returns a graceful placeholder
+when not configured.
+
+Developer notes:
+- The module attempts to import an OpenAI wrapper that may be provided
+  by different langchain packages; this maximizes compatibility across
+  environments. If an LLM cannot be imported or the `OPENAI_API_KEY` is
+  missing, the endpoint will respond with a friendly message rather
+  than raising.
+- The module evaluates LLM availability at import time for simplicity.
+  If you need dynamic LLM toggling at runtime, move the initialization
+  into a startup event or a factory function.
+"""
+
 from __future__ import annotations
 
 import os
@@ -28,10 +46,13 @@ class QuestionRequest(BaseModel):
 
 
 def get_openai_api_key() -> Optional[str]:
+    """Return the OpenAI key from the environment if present."""
     return os.environ.get("OPENAI_API_KEY")
 
 
 # Prepare your LLM (example with OpenAI key set as env variable)
+# The module sets `LLM_AVAILABLE` at import time. Tests mock this behavior
+# by reloading the module after injecting fake packages or environment vars.
 LLM_AVAILABLE = False
 if OpenAI is not None and get_openai_api_key():
     try:
@@ -45,6 +66,11 @@ else:
 
 @app.post("/qa")
 async def question_answer(req: QuestionRequest):
+    """Return an LLM-generated answer if available or a placeholder.
+
+    Note: LLM invocation may differ between LangChain wrappers. The code
+    attempts `.invoke()` first then falls back to calling the object.
+    """
     # Generate the response using LLM if available, else return a placeholder
     if LLM_AVAILABLE and llm is not None:
         try:

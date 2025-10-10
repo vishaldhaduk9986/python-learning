@@ -1,3 +1,26 @@
+"""
+day15.py
+---------
+Small example demonstrating how to call an OpenAI LLM via LangChain.
+
+Developer notes:
+- This module is intentionally small and demonstrates a single-run example
+    (not intended to run as a long-lived server).
+- It tries to import `OpenAI` from a few compatible LangChain packages so
+    it works across different local setups. If none are installed, the
+    module will fail fast with an explanatory message.
+- The OpenAI API key is read from the `OPENAI_API_KEY` environment variable.
+    For local development: export OPENAI_API_KEY=your_key
+
+Usage:
+        python src/day15.py
+
+Returned values / exit codes:
+- 0 : success
+- 1 : OPENAI_API_KEY missing
+
+"""
+
 import os
 import sys
 from typing import Optional
@@ -25,7 +48,11 @@ from langchain.prompts import PromptTemplate
 
 
 def get_openai_api_key() -> Optional[str]:
-    """Return the OpenAI API key from environment if set."""
+    """Return the OpenAI API key from the environment if set.
+
+    Returning None signals callers to avoid attempting network calls
+    (useful for tests and offline runs).
+    """
     return os.environ.get("OPENAI_API_KEY")
 
 

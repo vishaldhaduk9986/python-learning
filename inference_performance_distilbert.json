@@ -1,6 +1,0 @@
-{
-    "model": "distilbert-base-uncased-finetuned-sst-2-english",
-    "num_sentences": 50,
-    "total_inference_time_sec": 0.7868850231170654,
-    "average_inference_time_per_sentence_sec": 0.015737700462341308
-}

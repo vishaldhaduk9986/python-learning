@@ -1,3 +1,15 @@
+"""
+day18.py
+---------
+Example that builds a FAISS index from a set of text files and queries it.
+
+Developer notes:
+- Expects files `file1.txt`..`file10.txt` to exist in the repository root
+    (tests create lightweight sample files when needed).
+- Uses OpenAIEmbeddings by default; for offline tests inject a fake
+    embeddings implementation.
+"""
+
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -6,10 +18,10 @@ from langchain_community.vectorstores import FAISS
 file_paths = [f"file{i}.txt" for i in range(1, 11)]
 documents = []
 for path in file_paths:
-    loader = TextLoader(path)
-    for doc in loader.load():
-        doc.metadata['source'] = path
-        documents.append(doc)
+        loader = TextLoader(path)
+        for doc in loader.load():
+                doc.metadata['source'] = path
+                documents.append(doc)
 
 # 2. (Optional) Split long documents into smaller chunks
 # from langchain_text_splitters import CharacterTextSplitter
@@ -27,5 +39,5 @@ results = vector_store.similarity_search(query, k=3)
 
 # 5. Print result filenames and excerpts
 for result in results:
-    print(result.metadata['source'])
-    print(result.page_content[:160])
+        print(result.metadata['source'])
+        print(result.page_content[:160])
