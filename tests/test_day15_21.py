@@ -5,9 +5,17 @@ import os
 import io
 import contextlib
 import importlib
+
+from pathlib import Path
+repo_root = Path(__file__).resolve().parents[1]
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
 import pytest
 
 MODULES_TO_TEST = [
+
+# Ensure repo root is on sys.path so imports like `importlib.import_module('src.day15')`
+# work when running a single test or invoking pytest from a subdirectory.
     'src.day15',
     'src.day16',
     'src.day17',
@@ -121,9 +129,9 @@ def inject_fakes(tmp_path, monkeypatch):
     lc_openai = make_mod('langchain_openai')
 
     # classes
-    lc_community_llms.OpenAI = DummyLLM
-    lc_llms.OpenAI = DummyLLM
-    lc_openai.OpenAI = DummyLLM
+    lc_community_llms.ChatOpenAI = DummyLLM
+    lc_llms.ChatOpenAI = DummyLLM
+    lc_openai.ChatOpenAI = DummyLLM
     # langchain_openai may also expose OpenAIEmbeddings
     lc_openai.OpenAIEmbeddings = DummyEmbeddings
 

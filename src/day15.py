@@ -27,16 +27,16 @@ from typing import Optional
 
 # Attempt to import OpenAI LLM from multiple possible LangChain packages for compatibility
 try:
-    from langchain_community.llms import OpenAI
+    from langchain_community.llms import ChatOpenAI
 except ImportError:
     try:
-        from langchain_openai import OpenAI  # type: ignore
+        from langchain_openai import ChatOpenAI  # type: ignore
     except ImportError:
         try:
-            from langchain.llms import OpenAI  # type: ignore
+            from langchain.llms import ChatOpenAI  # type: ignore
         except ImportError as e:
             print(
-                "Could not import OpenAI LLM from langchain packages.\n"
+                "Could not import ChatOpenAI LLM from langchain packages.\n"
                 "Please install one of: langchain-community or langchain-openai.\n"
                 f"Import error: {e}",
                 file=sys.stderr,
@@ -68,7 +68,7 @@ def main() -> int:
         return 1
 
     # Initialize OpenAI LLM with explicit API key to avoid validation errors
-    llm = OpenAI(temperature=0, openai_api_key=api_key)
+    llm = ChatOpenAI(temperature=0, openai_api_key=api_key, model_name="gpt-4o")
 
     # Prompt template to politely rewrite a sentence
     prompt_template = PromptTemplate(

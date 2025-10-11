@@ -10,7 +10,7 @@ Developer notes:
     embeddings implementation.
 """
 
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import TextLoader # type: ignore
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 

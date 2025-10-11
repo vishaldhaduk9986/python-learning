@@ -1,6 +1,6 @@
 import os
 import sys
-import pytest
+import pytest # type: ignore
 from unittest.mock import patch, MagicMock
 
 # Ensure repository root is on sys.path so `src` package can be imported when

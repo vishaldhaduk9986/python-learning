@@ -21,7 +21,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import PromptTemplate
-from langchain_community.llms import OpenAI
+from langchain_community.llms import ChatOpenAI
 
 # 1. Load and preprocess the PDF (example)
 pdf_path = "example.pdf"
@@ -43,9 +43,10 @@ vector_store = FAISS.from_documents(docs, embeddings)
 retriever = vector_store.as_retriever()
 
 # 5. Initialize LLM
-llm = OpenAI(
+llm = ChatOpenAI(
     temperature=0,
-    openai_api_key=os.environ.get("OPENAI_API_KEY")
+    openai_api_key=os.environ.get("OPENAI_API_KEY"),
+    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
 )
 
 # 6. Define the summarization prompt

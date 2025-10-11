@@ -27,14 +27,14 @@ from pydantic import BaseModel
 
 # Try to import the OpenAI wrapper compatible with this workspace
 try:
-    from langchain_openai import OpenAI
+    from langchain_openai import ChatOpenAI
 except Exception:
     # langchain-openai may not be installed in some environments; fall back
     # to langchain_community if available.
     try:
-        from langchain_community.llms import OpenAI  # type: ignore
+        from langchain_community.llms import ChatOpenAI  # type: ignore
     except Exception:
-        OpenAI = None  # type: ignore
+        ChatOpenAI = None  # type: ignore
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -54,9 +54,13 @@ def get_openai_api_key() -> Optional[str]:
 # The module sets `LLM_AVAILABLE` at import time. Tests mock this behavior
 # by reloading the module after injecting fake packages or environment vars.
 LLM_AVAILABLE = False
-if OpenAI is not None and get_openai_api_key():
+if ChatOpenAI is not None and get_openai_api_key():
     try:
-        llm = OpenAI(temperature=0, openai_api_key=get_openai_api_key())
+        llm = ChatOpenAI(
+    temperature=0,
+    openai_api_key=os.environ.get("OPENAI_API_KEY"),
+    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
+)
         LLM_AVAILABLE = True
     except Exception:
         llm = None  # type: ignore

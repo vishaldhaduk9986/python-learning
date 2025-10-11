@@ -10,6 +10,12 @@ import pytest
 
 from fastapi.testclient import TestClient
 
+# Ensure repo root is on sys.path so imports like `importlib.import_module('src.day19')`
+# work when running a single test.
+repo_root = Path(__file__).resolve().parents[1]
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
+
 
 def test_day13_hf_api_path_and_local_fallback(monkeypatch, tmp_path):
     mod = importlib.import_module('src.day13')
@@ -67,7 +73,7 @@ def test_day19_llm_available_branch(monkeypatch):
     monkeypatch.setenv('OPENAI_API_KEY', 'sk-test')
     # Ensure importing langchain_openai picks up our DummyLLM class
     fake_mod = types.ModuleType('langchain_openai')
-    fake_mod.OpenAI = DummyLLM
+    fake_mod.ChatOpenAI = DummyLLM
     monkeypatch.setitem(sys.modules, 'langchain_openai', fake_mod)
     # Force a fresh import so module-level LLM_AVAILABLE is recomputed
     if 'src.day19' in sys.modules:
@@ -82,6 +88,17 @@ def test_day19_llm_available_branch(monkeypatch):
 
 
 def test_day21_upload_and_ask(monkeypatch, tmp_path):
+    # Ensure a lightweight fake langchain_community.llms module exists so
+    # importing src.day21 during tests doesn't try to import the real
+    # langchain_community.llms package (which may not expose ChatOpenAI).
+    fake_llms_mod = types.ModuleType('langchain_community.llms')
+    # provide a minimal ChatOpenAI placeholder so the import succeeds
+    class _PlaceholderChat:
+        def __init__(self, *args, **kwargs):
+            pass
+    fake_llms_mod.ChatOpenAI = _PlaceholderChat
+    monkeypatch.setitem(sys.modules, 'langchain_community.llms', fake_llms_mod)
+
     mod = importlib.import_module('src.day21')
     client = TestClient(mod.app)
 
@@ -138,7 +155,8 @@ def test_day21_upload_and_ask(monkeypatch, tmp_path):
         def __call__(self, text):
             return 'answer:' + text
 
-    monkeypatch.setattr('src.day21.OpenAI', DummyLLM, raising=False)
+    # day21 imports ChatOpenAI in current code; ensure tests provide ChatOpenAI
+    monkeypatch.setattr('src.day21.ChatOpenAI', DummyLLM, raising=False)
 
     # Fake RetrievalQA to return a predictable answer
     class FakeRetrievalQA:

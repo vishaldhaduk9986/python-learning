@@ -13,7 +13,7 @@ Developer notes:
 """
 
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 
@@ -28,7 +28,11 @@ pages = loader.load_and_split()
 text = "\n".join([page.page_content for page in pages[:2]])
 
 # Summarize with OpenAI via LangChain using the API key from env
-llm = OpenAI(temperature=0, openai_api_key=os.environ.get("OPENAI_API_KEY"))
+llm = ChatOpenAI(
+    temperature=0,
+    openai_api_key=os.environ.get("OPENAI_API_KEY"),
+    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
+)
 prompt = PromptTemplate(
         input_variables=["text"],
         template="Summarize the following document in 2-3 sentences:\n\n{text}"
