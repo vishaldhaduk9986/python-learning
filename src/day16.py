@@ -1,14 +1,13 @@
-import os
-from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain, SequentialChain
 from langchain.prompts import PromptTemplate
 
-# Instantiate an LLM using the ChatOpenAI wrapper with the latest model.
-llm = ChatOpenAI(
-    temperature=0,
-    openai_api_key=os.environ.get("OPENAI_API_KEY"),
-    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
-)
+from src.utils import make_chat_llm
+
+# Instantiate an LLM using the shared helper so tests can monkeypatch
+# make_chat_llm to return a dummy LLM.
+llm = make_chat_llm(model_name="gpt-4o", temperature=0)
+if llm is None:
+    raise RuntimeError("ChatOpenAI is not available or OPENAI_API_KEY is missing")
 
 summary_prompt = PromptTemplate(
     input_variables=["text"],

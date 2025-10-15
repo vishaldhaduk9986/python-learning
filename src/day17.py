@@ -13,32 +13,31 @@ Developer notes:
 """
 
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 
-import os
+from src.utils import make_chat_llm
 
 
-# Load the PDF (replace with a real path if running locally)
-loader = PyPDFLoader("example.pdf")
-pages = loader.load_and_split()
+def summarize_pdf(path: str):
+    loader = PyPDFLoader(path)
+    pages = loader.load_and_split()
 
-# Combine both pages' text for a short demo summary
-text = "\n".join([page.page_content for page in pages[:2]])
+    text = "\n".join([page.page_content for page in pages[:2]])
 
-# Summarize with OpenAI via LangChain using the API key from env
-llm = ChatOpenAI(
-    temperature=0,
-    openai_api_key=os.environ.get("OPENAI_API_KEY"),
-    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
-)
-prompt = PromptTemplate(
+    llm = make_chat_llm(model_name="gpt-4o", temperature=0)
+    if llm is None:
+        raise RuntimeError("ChatOpenAI is not available or OPENAI_API_KEY missing")
+
+    prompt = PromptTemplate(
         input_variables=["text"],
-        template="Summarize the following document in 2-3 sentences:\n\n{text}"
-)
-chain = LLMChain(llm=llm, prompt=prompt)
-summary = chain.run(text)
+        template="Summarize the following document in 2-3 sentences:\n\n{text}",
+    )
+    chain = LLMChain(llm=llm, prompt=prompt)
+    return chain.run(text)
 
-print("Document Summary:")
-print(summary)
+
+if __name__ == "__main__":
+    s = summarize_pdf("example.pdf")
+    print("Document Summary:")
+    print(s)

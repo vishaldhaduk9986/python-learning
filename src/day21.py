@@ -22,6 +22,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.llms import ChatOpenAI
+from src.utils import make_chat_llm, get_openai_api_key
 from langchain.chains import RetrievalQA
 import os
 
@@ -85,15 +86,13 @@ async def ask(question_req: QuestionReq):
         retriever = vector_store.as_retriever(search_kwargs={"k": 3})
     except TypeError:
         retriever = vector_store.as_retriever()
-    openai_api_key = os.environ.get("OPENAI_API_KEY")
+    openai_api_key = get_openai_api_key()
     if not openai_api_key:
         raise HTTPException(status_code=500, detail="Missing OpenAI API key.")
 
-    llm = ChatOpenAI(
-    temperature=0,
-    openai_api_key=os.environ.get("OPENAI_API_KEY"),
-    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
-)
+    llm = make_chat_llm(openai_api_key=openai_api_key, model_name="gpt-4o", temperature=0)
+    if llm is None:
+        raise HTTPException(status_code=500, detail="ChatOpenAI not available or failed to initialize.")
 
     # Build a retrieval QA chain and run the query.
     # Different langchain versions expose different factory helpers. Try

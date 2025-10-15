@@ -21,39 +21,13 @@ Returned values / exit codes:
 
 """
 
-import os
 import sys
 from typing import Optional
-
-# Attempt to import OpenAI LLM from multiple possible LangChain packages for compatibility
-try:
-    from langchain_community.llms import ChatOpenAI
-except ImportError:
-    try:
-        from langchain_openai import ChatOpenAI  # type: ignore
-    except ImportError:
-        try:
-            from langchain.llms import ChatOpenAI  # type: ignore
-        except ImportError as e:
-            print(
-                "Could not import ChatOpenAI LLM from langchain packages.\n"
-                "Please install one of: langchain-community or langchain-openai.\n"
-                f"Import error: {e}",
-                file=sys.stderr,
-            )
-            raise
 
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 
-
-def get_openai_api_key() -> Optional[str]:
-    """Return the OpenAI API key from the environment if set.
-
-    Returning None signals callers to avoid attempting network calls
-    (useful for tests and offline runs).
-    """
-    return os.environ.get("OPENAI_API_KEY")
+from src.utils import get_openai_api_key, make_chat_llm
 
 
 def main() -> int:
@@ -67,8 +41,11 @@ def main() -> int:
         )
         return 1
 
-    # Initialize OpenAI LLM with explicit API key to avoid validation errors
-    llm = ChatOpenAI(temperature=0, openai_api_key=api_key, model_name="gpt-4o")
+    # Initialize ChatOpenAI via shared helper. Returns None if unavailable.
+    llm = make_chat_llm(openai_api_key=api_key, model_name="gpt-4o")
+    if llm is None:
+        print("Failed to initialize ChatOpenAI; check installation and API key.", file=sys.stderr)
+        return 1
 
     # Prompt template to politely rewrite a sentence
     prompt_template = PromptTemplate(

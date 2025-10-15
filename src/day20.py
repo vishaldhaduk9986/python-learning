@@ -42,12 +42,12 @@ vector_store = FAISS.from_documents(docs, embeddings)
 # 4. Create retriever
 retriever = vector_store.as_retriever()
 
-# 5. Initialize LLM
-llm = ChatOpenAI(
-    temperature=0,
-    openai_api_key=os.environ.get("OPENAI_API_KEY"),
-    model_name="gpt-4o"  # Latest OpenAI model as of October 2025
-)
+from src.utils import make_chat_llm
+
+# 5. Initialize LLM using shared helper
+llm = make_chat_llm(model_name="gpt-4o", temperature=0)
+if llm is None:
+  raise RuntimeError("ChatOpenAI is not available or OPENAI_API_KEY missing")
 
 # 6. Define the summarization prompt
 prompt = PromptTemplate.from_template(
