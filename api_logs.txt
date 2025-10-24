@@ -1,0 +1,2 @@
+[2025-10-24 10:01:58] Endpoint: /some-endpoint | User: JohnDoe
+[2025-10-24 10:02:27] Endpoint: /some-endpoint | User: pappu

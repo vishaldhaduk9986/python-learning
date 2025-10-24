@@ -1,0 +1,1020 @@
+2025-10-24 10:09:15 - app - INFO - Root endpoint accessed
+2025-10-24 10:09:23 - app - INFO - QA query received: What is FastAPI?
+2025-10-24 10:09:25 - app - INFO - QA query received: What is FastAPI?
+2025-10-24 10:09:25 - app - INFO - QA query received: What is FastAPI?
+2025-10-24 10:10:18 - app - INFO - QA query received: What is FastAPI?
+2025-10-24 10:10:27 - app - INFO - QA query received: 
+2025-10-24 10:10:41 - app - INFO - QA query received: What is python
+2025-10-24 10:58:14 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 10:58:46 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 10:59:45 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:00:07 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:00:07 - app - INFO - Root endpoint accessed
+2025-10-24 11:00:07 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:00:07 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:00:07 - app - ERROR - HTTP error 401 at http://testserver/qa: Invalid or missing API Key
+2025-10-24 11:00:07 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:00:07 - app - ERROR - Validation error for request: query=how+are+you - Errors: [{'type': 'missing', 'loc': ('query', 'query'), 'msg': 'Field required', 'input': None}]
+2025-10-24 11:00:07 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:00:40 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:00:40 - app - INFO - Root endpoint accessed
+2025-10-24 11:00:40 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:00:40 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:00:40 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:00:40 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:00:40 - app - INFO - QA query received: how are you
+2025-10-24 11:00:40 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:00:40 - app - ERROR - Validation error for request: text=I+love+this+product - Errors: [{'type': 'missing', 'loc': ('query', 'text'), 'msg': 'Field required', 'input': None}]
+2025-10-24 11:00:40 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - app - INFO - Root endpoint accessed
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:00:58 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:00:58 - app - INFO - QA query received: how are you
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:00:58 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - uvicorn - INFO - Loaded sentiment model: distilbert-base-uncased-finetuned-sst-2-english
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - app - INFO - Root endpoint accessed
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:01:47 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:01:47 - app - INFO - QA query received: how are you
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:01:47 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:06:13 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:10:48 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:10:49 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:10:49 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:10:49 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:10:49 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:10:49 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:12:46 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:12:47 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:12:47 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:12:47 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:12:47 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:12:47 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:13:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:13:32 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:13:32 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:13:32 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:13:32 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:13:32 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:13:32 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:11 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - app - INFO - Root endpoint accessed
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:14:12 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:14:12 - app - INFO - QA query received: how are you
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:14:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:34 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - app - INFO - Root endpoint accessed
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:15:35 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:15:35 - app - INFO - QA query received: how are you
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:15:35 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:58 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - app - INFO - Root endpoint accessed
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:16:59 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:16:59 - app - INFO - QA query received: how are you
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:16:59 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:30 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - app - INFO - Root endpoint accessed
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:17:31 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:17:31 - app - INFO - QA query received: how are you
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - day28 - ERROR - HF inference call failed
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day28.py", line 114, in predict
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day28_extra.py", line 65, in raise_for_status
+    raise RuntimeError("bad")
+RuntimeError: bad
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 503 Service Unavailable"
+2025-10-24 11:17:31 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:17:31 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:19:55 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:22:11 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - app - INFO - Root endpoint accessed
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:22:12 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:22:12 - app - INFO - QA query received: how are you
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - day28 - ERROR - HF inference call failed
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day28.py", line 114, in predict
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day28_extra.py", line 65, in raise_for_status
+    raise RuntimeError("bad")
+RuntimeError: bad
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 503 Service Unavailable"
+2025-10-24 11:22:12 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:22:12 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - app - INFO - Root endpoint accessed
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:25:09 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:25:09 - app - INFO - QA query received: how are you
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - day28 - ERROR - HF inference call failed
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day28.py", line 114, in predict
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day28_extra.py", line 65, in raise_for_status
+    raise RuntimeError("bad")
+RuntimeError: bad
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 503 Service Unavailable"
+2025-10-24 11:25:09 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:25:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - app - INFO - Root endpoint accessed
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:26:08 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:26:08 - app - INFO - QA query received: how are you
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:26:08 - day28 - ERROR - HF inference call failed
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day28.py", line 114, in predict
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day28_extra.py", line 65, in raise_for_status
+    raise RuntimeError("bad")
+RuntimeError: bad
+2025-10-24 11:26:08 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 503 Service Unavailable"
+2025-10-24 11:26:08 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:09 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - uvicorn - ERROR - HF Inference API call failed; falling back to local pipeline.
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day13.py", line 123, in analyze
+    api_result = call_hf_inference_api(request.text)
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day13.py", line 46, in raise_api
+    raise RuntimeError("network error")
+RuntimeError: network error
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: OPTIONS http://testserver/analyze "HTTP/1.1 405 Method Not Allowed"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:33 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/summary "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 400 Bad Request"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/some-endpoint?user=alice "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - app - INFO - Root endpoint accessed
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - app - ERROR - Unauthorized access attempt with API key: None
+2025-10-24 11:26:34 - app - ERROR - HTTP error 401 at http://testserver/qa?query=x: Invalid or missing API Key
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=x "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:26:34 - app - INFO - QA query received: how are you
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa?query=how+are+you "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+love+this+product "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=I+hate+this "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text= "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment?text=Just+ok "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 422 Unprocessable Entity"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/qa "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/sentiment "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - day28 - ERROR - HF inference call failed
+Traceback (most recent call last):
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/src/day28.py", line 114, in predict
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/macbook-air-m1/Mohit/python/python-training/python-learning/tests/test_day28_extra.py", line 65, in raise_for_status
+    raise RuntimeError("bad")
+RuntimeError: bad
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 503 Service Unavailable"
+2025-10-24 11:26:34 - day28 - WARNING - Unauthorized access attempt
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 401 Unauthorized"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/doc "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/hello "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/submit "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/user/TestUser "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/user "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/user/UnknownUser "HTTP/1.1 404 Not Found"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/task "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/tasks "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: DELETE http://testserver/books/3 "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/books/3 "HTTP/1.1 404 Not Found"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: GET http://testserver/books "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/books "HTTP/1.1 201 Created"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: PATCH http://testserver/books/4 "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/analyze "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 500 Internal Server Error"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/upload_pdf "HTTP/1.1 200 OK"
+2025-10-24 11:26:34 - httpx - INFO - HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
